@@ -1,0 +1,2 @@
+String? produdtVarId;
+String? productId;
