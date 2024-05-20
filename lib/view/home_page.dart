@@ -63,6 +63,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final width = Get.width;
+    final height = Get.height;
+    print(height.toString() +
+        '--------------------------heigh-------------------');
+    print(width.toString() +
+        '--------------------------width-------------------');
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
@@ -93,9 +99,8 @@ class _HomePageState extends State<HomePage> {
                     itemCount: getProductController
                         .productDataList.value.products!.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1 / 1.38,
-                    ),
+                        crossAxisCount: 2,
+                        childAspectRatio: height < 700 ? 1 / 1.34 : 0.645),
                     itemBuilder: (context, index) {
                       return Stack(children: [
                         Padding(
