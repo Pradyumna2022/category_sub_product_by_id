@@ -1,2 +1,2 @@
 String? produdtVarId;
-String? productId;
+int? productId;

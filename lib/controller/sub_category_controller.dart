@@ -1,28 +1,25 @@
 import 'package:get/get.dart';
-import 'package:prodsubecom/model/sub_category_model.dart';
+import 'package:prodsubecom/model/product_model.dart';
 import 'package:prodsubecom/repository/enum.dart';
 import 'package:prodsubecom/repository/repos.dart';
-import 'package:prodsubecom/view/all_product_screen.dart';
 
-class SubAndBrandController extends GetxController {
+class ProductController extends GetxController {
   final _api = AuthRepository();
 
   final rxRequestStatus = Status.LOADING.obs;
-  final subcatAndBrandList = SubCategoryModel().obs;
+  final productDataList = ProductModel().obs;
   RxString error = ''.obs;
 
   void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
-  void setSubAndCatBrandList(SubCategoryModel _value) =>
-      subcatAndBrandList.value = _value;
+  void productDataGet(ProductModel _value) => productDataList.value = _value;
   void setError(String _value) => error.value = _value;
-  Map Data = {"category_id": '1'};
 
-  void SubCatAndBrandApi() {
+  void getProductDataMethod() {
     //  setRxRequestStatus(Status.LOADING);
 
-    _api.fetchSubCategApi(Data).then((value) {
+    _api.fetchProductApi().then((value) {
       setRxRequestStatus(Status.COMPLETED);
-      setSubAndCatBrandList(value);
+      productDataList(value);
       // print(value);
 
       print('done');
